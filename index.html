@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maptiler weather layers</title>
+  
   <link href="/styles/base.css?t=1724137041" rel="stylesheet">
   <script src="/js/bootstrap.bundle.min.js?t=1724137041"></script>
   <script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.min.js"></script>
   <link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css" rel="stylesheet" />
   <script src="https://cdn.maptiler.com/maptiler-weather/v2.0.0/maptiler-weather.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
   <style>
     body { margin: 0; padding: 0; font-family: sans-serif; }
     #map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -32,12 +34,13 @@
   <div id="pointer-data"></div>
   <div id="map">
     <ul id="buttons">
-      <li id="precipitation" class="btn btn-primary button">Precipitation</li>
-      <li id="pressure" class="btn btn-primary button">Pressure</li>
-      <li id="radar" class="btn btn-primary button">Radar</li>
-      <li id="temperature" class="btn btn-primary button">Temperature</li>
-      <li id="wind" class="btn btn-primary button">Wind</li>
-    </ul>
+        <li id="precipitation" class="btn btn-primary button">Precipitation</li>
+        <li id="pressure" class="btn btn-primary button">Pressure</li>
+        <li id="radar" class="btn btn-primary button">Radar</li>
+        <li id="temperature" class="btn btn-primary button">Temperature</li>
+        <li id="wind" class="btn btn-primary button">Wind</li>
+      </ul>
+      
   </div>
   <script>
       maptilersdk.config.apiKey = 'AXZusuZamaFGsiRflWNp';
@@ -222,7 +225,10 @@
           case 'temperature':
             weatherLayer = new maptilerweather.TemperatureLayer({
               colorramp: maptilerweather.ColorRamp.builtin.TEMPERATURE_3,
-              id: 'temperature'
+              id: 'temperature',
+              animation: true, // Enable animation
+              animationDuration: 3600,
+              animationInterval: 60 
             });
             break;
           case 'wind':
